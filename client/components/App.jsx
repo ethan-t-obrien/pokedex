@@ -15,17 +15,28 @@ class App extends React.Component  {
     getAllPokemon()
     .then(pokemon => {
       console.log(pokemon.body.results)
+      const pokelist = pokemon.body.results
+
+      this.setState({
+        pokemon: [pokelist]
+      })
     })
     
   }
 
 
   render() {
-    console.log(this.state)
+    console.log(this.state.pokemon[0, [0].name])
   return (
     <>
     <h1>Pokedex</h1>
-      <h3>Bulbasaur</h3>
+      <ul>
+       {/* <li> {this.state.pokemon.map(pokemon => {
+          return pokemon.name
+        })}
+        </li> */}
+        <li>{this.state.pokemon[1]}</li>
+      </ul>
     </>    
 
     )
