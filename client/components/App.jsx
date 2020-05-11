@@ -5,7 +5,9 @@ class App extends React.Component  {
   constructor(props) {
     super(props)
     this.state = {
-      pokemon: []
+      pokemon: [ 
+        
+      ]
     }
   }
 
@@ -14,9 +16,8 @@ class App extends React.Component  {
 
     getAllPokemon()
     .then(pokemon => {
-      console.log(pokemon.body.results)
-      const pokelist = pokemon.body.results
-
+      const pokelist = pokemon.body.results.map((poke) => {return poke.name})
+      
       this.setState({
         pokemon: [pokelist]
       })
@@ -26,17 +27,17 @@ class App extends React.Component  {
 
 
   render() {
-    console.log(this.state.pokemon[0, [0].name])
+    let pokedex = this.state.pokemon
+    console.log(pokedex)
   return (
     <>
     <h1>Pokedex</h1>
+      <div className="list">
       <ul>
-       {/* <li> {this.state.pokemon.map(pokemon => {
-          return pokemon.name
-        })}
-        </li> */}
-        <li>{this.state.pokemon[1]}</li>
+        <li>{pokedex}</li>
+  {/* {pokedex.map((pokemon) => <li>{pokemon}</li> )} */}
       </ul>
+      </div>
     </>    
 
     )
