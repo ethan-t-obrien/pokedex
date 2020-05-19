@@ -11,6 +11,7 @@ class App extends React.Component  {
       showItems: 20,
     }
     this.handleShowMore = this.handleShowMore.bind(this)
+    this.handleShowLess = this.handleShowLess.bind(this)
 
   }
 
@@ -37,6 +38,15 @@ class App extends React.Component  {
         })
       }
 
+      handleShowLess() {
+        this.setState({
+          showItems:
+          this.state.showItems = this.state.showItems - 20,
+          startItem:
+          this.state.startItem = this.state.startItem - 20
+        })
+      }
+
     
     
   
@@ -50,6 +60,10 @@ class App extends React.Component  {
       <div className="list">
     
       {pokedex.slice(this.state.startItem, this.state.showItems).map((pokemon) => <li key={pokemon}>{pokemon}</li> )}
+       
+        <button onClick={this.handleShowLess}>
+          back
+        </button>
         <button onClick={this.handleShowMore} >
           next
         </button>
