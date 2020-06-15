@@ -1,6 +1,8 @@
 import React from 'react'
 
 import Pokedex from './Pokedex'
+import Pokemon from './Pokemon'
+import {HashRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends React.Component  {
   constructor(props) {
@@ -12,10 +14,13 @@ class App extends React.Component  {
 
   render() {
   return (
-    <>
+    <Router>
     <h1>Pokedex</h1>
-      <Pokedex />
-    </>    
+     <Route exact path='/' component={Pokedex} />
+     <Route exact path='/:pokemon' component={Pokemon} />
+
+      {/* // <Pokedex /> */}
+    </Router>    
     )
   }
 }

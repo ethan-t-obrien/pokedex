@@ -1,16 +1,19 @@
 import React from 'react'
-import {getAllPokemon} from '../api/poke'
+import {getAllPokemon, getPokemon} from '../api/poke'
+import {Link} from 'react-router-dom'
 
 class Pokedex extends React.Component {
   constructor(props) {
       super(props)
-      this.state ={
+      this.state = {
           pokemon: [],
+          pokeInfo: {},
           startPokemon: 0,
           lastPokemon: 20,
       }
       this.handleNextPage = this.handleNextPage.bind(this)
       this.handlePrePage = this.handlePrePage.bind(this)
+      // this.handelPokeState = this.handelPokeState.bind(this)
   }
 
   componentDidMount() {
@@ -46,16 +49,24 @@ class Pokedex extends React.Component {
         this.state.startPokemon = this.state.startPokemon - 20
       })
     }
+
+    // handelPokeState(pokemon) {
+    //   this.setState({
+    //     pokeInfo: pokemon
+    //   })
+    // }
+   
   
   render() {
       let pokedex = this.state.pokemon.map((poke) => {return poke.name})
-  
+      // let pokeInfo = this.state.pokemon.map((poke => {return poke.url}))
+      // console.log('hi', pokeInfo)
   return (
   <>
   <h1>Pokedex</h1>
     <div className="list">
 
-    {pokedex.slice(this.state.startPokemon, this.state.lastPokemon).map((pokemon) => <li key={pokemon}>{pokemon}</li> )}
+    {pokedex.slice(this.state.startPokemon, this.state.lastPokemon).map((pokemon) => <li key={pokemon}><Link to={'/' + pokemon}>{pokemon}</Link></li>)}
     
     <button onClick={this.handlePrePage}>
       back
