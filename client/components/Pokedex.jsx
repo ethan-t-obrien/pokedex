@@ -25,7 +25,7 @@ class Pokedex extends React.Component {
         this.setState({
           pokemon: pokelist
         })
-        console.log(this.state)
+        // console.log(this.state)
       })
     }
 
@@ -80,5 +80,7 @@ class Pokedex extends React.Component {
   )
   }
 }
+
+
 
 export default (Pokedex)

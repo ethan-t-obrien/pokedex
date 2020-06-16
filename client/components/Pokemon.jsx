@@ -5,6 +5,7 @@ class Pokemon extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            pokeName: {},
             pokeInfo: {
 
             }
@@ -13,18 +14,16 @@ class Pokemon extends React.Component {
 
     componentDidMount() {
 
-        let pokemon = this.props.match.params.pokeName
-        console.log(pokemon)
+        let pokemon = this.props.match.params.pokemon
+        console.log( 'hi', pokemon)
+        // this.setState({
+        //     pokeName: pokemon
+        // })
         // console.log(this.state)
         getPokemon(pokemon)
             .then(pokemon => {
-                console.log('hi', pokemon)
-
-                // this.setState({
-                //     pokemon: {
-                //         name: 
-                //     }
-                // })
+                const pokeInfo = pokemon
+                console.log(pokeInfo)
             })
     }
 
@@ -32,7 +31,7 @@ class Pokemon extends React.Component {
 
         render() {
             return(
-                <h1>reeee</h1>
+                <h1>reee</h1>
             )
         }
 
